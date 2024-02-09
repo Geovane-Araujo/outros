@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite para Namorar</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="pergunta">Você aceita namorar comigo?</h1>
+        <div class="buttons">
+            <button onclick="aceitar()">Sim</button>
+            <button id="naoButton" onclick="recusar()">Não</button>
+        </div>
+    </div>
+    
+    <script>
+        function aceitar() {
+            document.getElementById('pergunta').innerText = "Parabéns! Você acaba de ganhar um namorado que possui diversos benefícios. Entre em contato para saber mais detalhes.";
+            document.querySelector('.buttons').style.display = 'none';
+        }
+
+        function recusar() {
+            const button = document.getElementById('naoButton');
+            const container = document.querySelector('.container');
+            const maxWidth = window.innerWidth - button.offsetWidth;
+            const maxHeight = window.innerHeight - button.offsetHeight;
+            const newX = Math.floor(Math.random() * maxWidth);
+            const newY = Math.floor(Math.random() * maxHeight);
+
+            button.style.position = 'absolute';
+            button.style.left = `${newX}px`;
+            button.style.top = `${newY}px`;
+        }
+
+        setInterval(recusar, 1000);
+    </script>
+</body>
+</html>
